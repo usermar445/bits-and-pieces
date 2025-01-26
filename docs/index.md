@@ -3,4 +3,4 @@
 Test
 
 
-![Alt text](pdfs/test.pdf){ type=application/pdf }
+![Did not work](pdfs/test.pdf){ type=application/pdf }
