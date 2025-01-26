@@ -1,0 +1,29 @@
+
+#### Overview of different test statistics
+
+| Parameter                           | Sampling Distribution | Requirements                                                                             | Test Statistic                                     |
+|-------------------------------------|-----------------------|------------------------------------------------------------------------------------------|----------------------------------------------------|
+| Proportion $\rho$                   | Normal ($z$)          | $np \geq 5$ and $nq \geq 5$                                                              | $z = \frac{\hat p - p}{\sqrt{\frac{pq}{n}}}$       |
+| Mean       $\mu$                    | $t$                   | $\sigma$ not known and normally distributed pop <br> or<br>$\sigma$ not known and $n>30$ | $t = \frac{\bar X - \mu}{\frac{s}{\sqrt{n}}}$      |
+| Mean       $\mu$                    | Normal ($z$)          | $\sigma$  known and normally distributed pop <br> or<br>$\sigma$  known and $n>30$       | $z = \frac{\bar X - \mu}{\frac{\sigma}{\sqrt{n}}}$ |
+| Std $\sigma$ <br> or var $\sigma^2$ | $\chi^2$              | Strict requirement: <br>normally distributed population                                  | $\chi^2 = \frac{(n-1)^2 s^2}{\sigma^2}$            |
+
+
+
+#### Differences in tests: left-sided, right-sided, two-sided
+The type of test can be determined by looking at $H_1$:
+
+- $H_1: \neq$ then the test is *two-sided*
+- $H_1: >$ then the test is *right-sided*
+- $H_1: <$ then the test is *left-sided*
+
+#### Equivalence of classic approach and confidence interval
+
+| Paramenter  | Equivalence in conclusion |
+|-------------|---------------------------|
+| Proportion  | No                        |
+| Mean        | Yes                       |
+| Stdv or Var | Yes                       |
+
+It is not the same because confidence interval method uses the estimated standard deviation based on sample.
+It might also lead to different conclusions.
