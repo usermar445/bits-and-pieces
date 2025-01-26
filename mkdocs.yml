@@ -5,29 +5,12 @@ theme:
   font:
     text: Merriweather Sans
     code: Red Hat Mono
-  logo: assets/logo.png
   favicon: assets/favicon.ico
   features:
     - navigation.footer
     - toc.follow
     - navigation.sections
-  palette:
-    # Dark Mode
-    - scheme: slate
-      toggle:
-        icon: material/weather-sunny
-        name: Dark mode
-      primary: green
-      accent: deep purple
 
-    # Light Mode
-    - scheme: default
-      toggle:
-        icon: material/weather-night
-        name: Light mode
-      primary: blue
-      accent: deep orange
-      
       
 plugins:
   - mkdocs-jupyter
@@ -35,3 +18,35 @@ plugins:
 nav:
   - Home: index.md
   - Notebook: test.ipynb
+  - 'Probability':
+      - Mathematical Probability: probability/probability_math.md
+      - Probability Basics: probability_basics.md
+  - 'Statistics Basics':
+      - Deskriptive Statistik: descriptive.md
+      - Verteilungen: distributions.md
+      - Schliessende Statistik: inference.md
+      - Mathematische Statistik: mathematical_stats.md
+      - Offene Fragen: open_questions_stats.md
+      - Glossar: glossary_basics.md
+  - 'Ökonometrie':
+      - Lineare Regression: lin_reg.md
+      - Offene Fragen: open_questions_regression.md
+  - 'A/B Testing':
+      - A/B Testing Übersicht: a_b_testing.md
+      - Metriken: metrics.md
+      - Experimentdesign: design.md
+      - Analysis: analysis.md
+      - Offene Fragen: open_questions_AB.md
+  - 'Machine Learning':
+      - Offene Fragen: open_questions_ML.md
+  - 'Offene Fragen':
+      - Allgemeine Offene Fragen: openquestions.md
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
