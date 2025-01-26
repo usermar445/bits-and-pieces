@@ -29,8 +29,8 @@ theme:
       accent: deep orange
       
       
-  plugins:
-    - mkdocs-jupyter
+plugins:
+  - mkdocs-jupyter
 
 nav:
   - Home: index.md
