@@ -54,27 +54,14 @@ nav:
   - 'Offene Fragen':
       - Allgemeine Offene Fragen: openquestions.md
   - 'SSO':
-      - Probability Distributions: prob_distributions.md
-      - Assessing Normality: assessing_normality.md
-      - Summarizing data: summarizing_data.md
-      - Sampling distributions: sampling_distributions.md
-      - Estimating mean and proportion: estimating.md
-      - Hypothesis testing: hypothesis_testing.md
-      - Inferences from two samples: two_samples.md
-      - Nonparametric tests: nonparametric_tests.md
-      - Contingency tables: contingency_tables.md
-      - Simple linear regression: linear_regression.md
-      - Working with normal distributions: skills_normal_distribution.md
-      - Estimating: skills_estimating.md
-      - Hypothesis testing: skills_hypothesis_testing.md
-      - Inferences Two Samples: skills_two_samples.md
-      - Nonparametric Tests: skills_nonparametric_tests.md
-      - Contingency Tables: skills_contingency_tables.md
-      - Simple linear regression: skills_linear_regression.md
-      - (Integer) linear optimization problems: ilo_problems.md
-      - Algorithms: algorithms.md
-      - Simulation optimization: simulation_optimization.md
-      - Exam prep stats: exam_prep_statistics.md
-      - Exam prep so: exam_prep_so.md
-      - Lecture Questions: lecture_questions.md
-      - Questions Contents & Skills: questions_content_skills.md
+      - Working with normal sso/distributions: skills_normal_distribution.md
+      - Estimating: sso/skills_estimating.md
+      - Hypothesis testing: sso/skills_hypothesis_testing.md
+      - Inferences Two Samples: sso/skills_two_samples.md
+      - Nonparametric Tests: sso/skills_nonparametric_tests.md
+      - Contingency Tables: sso/skills_contingency_tables.md
+      - Simple linear regression: sso/skills_linear_regression.md
+      - (Integer) linear optimization problems: sso/ilo_problems.md
+      - Exam prep stats: sso/exam_prep_statistics.md
+      - Exam prep so: sso/exam_prep_so.md
+      - Questions Contents & Skills: sso/questions_content_skills.md

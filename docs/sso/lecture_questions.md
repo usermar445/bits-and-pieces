@@ -1,6 +1,0 @@
-# Questions from lectures
-
-## Distributions
-
-
-## 
