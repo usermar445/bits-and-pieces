@@ -54,7 +54,7 @@ nav:
   - 'Offene Fragen':
       - Allgemeine Offene Fragen: openquestions.md
   - 'SSO':
-      - Working with normal sso/distributions: skills_normal_distribution.md
+      - Working with normal distributions: sso/skills_normal_distribution.md
       - Estimating: sso/skills_estimating.md
       - Hypothesis testing: sso/skills_hypothesis_testing.md
       - Inferences Two Samples: sso/skills_two_samples.md
