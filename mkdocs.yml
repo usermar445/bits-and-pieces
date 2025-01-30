@@ -65,3 +65,16 @@ nav:
       - Exam prep stats: sso/exam_prep_statistics.md
       - Exam prep so: sso/exam_prep_so.md
       - Questions Contents & Skills: sso/questions_content_skills.md
+  - 'AFCS':
+      - Cheatsheet R: afcs/cheatsheet_r.md
+      - Ch. 1 Intro: afcs/intro.md
+      - Ch. 2 Time Series Graphics: afcs/ts_graphics.md
+      - Ch. 3 Time Series Decomposition: afcs/ts_decomp.md
+      - Ch. 4 Features: afcs/features.md
+      - Ch. 5 Forecasting Toolbox: afcs/forecast_toolbox.md
+      - Ch. 7 Time Series Regregression models: afcs/regression.md
+      - Ch. 8 Exponential Smoothing: afcs/smoothing.md
+      - Ch. 9 ARIMA models: afcs/arima.md
+      - Ch. 10 Dynamic regression models: afcs/dynamic_reg_models.md
+      - Ch. 11 Hierarchical and grouped time series: afcs/hierarchical.md
+      - Lecture Questions: afcs/lecture_questions.md
