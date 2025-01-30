@@ -93,3 +93,10 @@ nav:
       - State of the Art: aml/state_of_art.md
       - Reinforcement Learning: aml/rl.md
       - Questions: aml/questions.md
+  - 'Causal':
+      - Lecture 1: causal/lectures/lecture1.md
+      - Lecture 2: causal/lectures/lecture2.md
+      - Lecture 3: causal/lectures/lecture3.md
+      - Lecture 4: causal/lectures/lecture4.md
+      - Lecture 5: causal/lectures/lecture5.md.md
+      - Exam summary: causal/exam_prep.md
