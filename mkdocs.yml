@@ -86,3 +86,10 @@ nav:
       - Part 3 - Supervised Learning: fundamentals/part3_supervised_learning.md
       - Part 4 - Unsupervised Learning: fundamentals/part4_unsupervised_learning.md
       - Part 5 - Ethics: fundamentals/part5_ethics.md
+  - 'AML':
+      - Neural Networks Essentials: aml/deep_learning_basics.md
+      - Convolution Networks: aml/convolution.md
+      - Network Architectures: aml/architectures.md
+      - State of the Art: aml/state_of_art.md
+      - Reinforcement Learning: aml/rl.md
+      - Questions: aml/questions.md
