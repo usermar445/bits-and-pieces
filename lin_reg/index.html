@@ -1,0 +1,2460 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://sitename.example/lin_reg/">
+      
+      
+        <link rel="prev" href="../glossary_basics/">
+      
+      
+        <link rel="next" href="../open_questions_regression/">
+      
+      
+      <link rel="icon" href="../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Lineare Regression - My MkDocs Material Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a40c8224.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i%7CRed+Hat+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Merriweather Sans";--md-code-font:"Red Hat Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lineare-regression" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="My MkDocs Material Documentation" class="md-header__button md-logo" aria-label="My MkDocs Material Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My MkDocs Material Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lineare Regression
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="My MkDocs Material Documentation" class="md-nav__button md-logo" aria-label="My MkDocs Material Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    My MkDocs Material Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Notebook
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Probability
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Probability
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../probability/probability_math/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mathematical Probability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../probability_basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Probability Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Statistics Basics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Statistics Basics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../descriptive/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deskriptive Statistik
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../distributions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Verteilungen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inference/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Schliessende Statistik
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mathematical_stats/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mathematische Statistik
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../open_questions_stats/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Offene Fragen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary_basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossar
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Ökonometrie
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Ökonometrie
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Lineare Regression
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Lineare Regression
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#idee" class="md-nav__link">
+    <span class="md-ellipsis">
+      Idee
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bivariate-regression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bivariate Regression
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiple-regression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple Regression
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kausale-analyse-mit-einer-dummy-variabel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kausale Analyse (mit einer Dummy Variabel)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inferenz" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inferenz
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funktionale-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funktionale Form
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anpassungsgute" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anpassungsgüte
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../open_questions_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Offene Fragen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    A/B Testing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            A/B Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../a_b_testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A/B Testing Übersicht
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Metriken
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Experimentdesign
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../open_questions_AB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Offene Fragen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Machine Learning
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Machine Learning
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../open_questions_ML/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Offene Fragen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Offene Fragen
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Offene Fragen
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openquestions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Allgemeine Offene Fragen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    SSO
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            SSO
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sso/skills_normal_distribution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Working with normal distributions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sso/skills_estimating/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Estimating
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sso/skills_hypothesis_testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hypothesis testing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sso/skills_two_samples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inferences Two Samples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sso/skills_nonparametric_tests/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nonparametric Tests
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sso/skills_contingency_tables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contingency Tables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sso/skills_linear_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Simple linear regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sso/ilo_problems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    (Integer) linear optimization problems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sso/exam_prep_statistics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exam prep stats
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sso/exam_prep_so/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exam prep so
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sso/questions_content_skills/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Questions Contents & Skills
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    AFCS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            AFCS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../afcs/cheatsheet_r/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cheatsheet R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../afcs/intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch. 1 Intro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../afcs/ts_graphics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch. 2 Time Series Graphics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../afcs/ts_decomp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch. 3 Time Series Decomposition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../afcs/features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch. 4 Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../afcs/forecast_toolbox/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch. 5 Forecasting Toolbox
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../afcs/regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch. 7 Time Series Regregression models
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../afcs/smoothing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch. 8 Exponential Smoothing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../afcs/arima/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch. 9 ARIMA models
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../afcs/dynamic_reg_models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch. 10 Dynamic regression models
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../afcs/hierarchical/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch. 11 Hierarchical and grouped time series
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Fundamentals
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            Fundamentals
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fundamentals/numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cheat Sheet Numpy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fundamentals/pandas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cheat Sheet Pandas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fundamentals/questions_literature/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Questions Literature
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fundamentals/part1_eda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 1 - Life-cycle, EDA, Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fundamentals/part2_data_visualization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 2 - Data Visualization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fundamentals/part3_supervised_learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 3 - Supervised Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fundamentals/part4_unsupervised_learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 4 - Unsupervised Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fundamentals/part5_ethics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 5 - Ethics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    AML
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            AML
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aml/deep_learning_basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Neural Networks Essentials
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aml/convolution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Networks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aml/architectures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Architectures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aml/state_of_art/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    State of the Art
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aml/rl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reinforcement Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aml/questions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Questions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Causal
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            Causal
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../causal/lectures/lecture1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../causal/lectures/lecture2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../causal/lectures/lecture3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../causal/lectures/lecture4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../causal/lectures/lecture5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../causal/exam_prep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exam summary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#idee" class="md-nav__link">
+    <span class="md-ellipsis">
+      Idee
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bivariate-regression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bivariate Regression
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiple-regression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple Regression
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kausale-analyse-mit-einer-dummy-variabel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kausale Analyse (mit einer Dummy Variabel)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inferenz" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inferenz
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funktionale-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funktionale Form
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anpassungsgute" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anpassungsgüte
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<div><h1 id="lineare-regression">Lineare Regression</h1>
+<h2 id="idee">Idee</h2>
+<p>Ziel der Regression ist die genauere Beschreibung des Zusammenhangs zweier (oder mehr) Zufallsvariabeln. "Zusammenhang" 
+hier bedeutet, dass angenommen wird, dass die Zufallsvariablen <strong>nicht</strong> unabhängig sind (??). Bei der <em>linearen</em> Regression
+wird zudem ein linearer Zusammenhang angenommen.</p>
+<p>Allgemein wird angenommen, dass gilt</p>
+<div class="arithmatex">\[Y = f(X) + \epsilon\]</div>
+<p>Mit den zwei Zufallsvariabeln <span class="arithmatex">\(Y, X\)</span>, der linearen Funktion <span class="arithmatex">\(f(X)\)</span> und dem Störterm <span class="arithmatex">\(\epsilon\)</span>. <span class="arithmatex">\(X\)</span> kann mehrere
+Dimensionen haben, d.h. es können auch mehrere Variabeln sein. <span class="arithmatex">\(Y\)</span> wird abhängige (response/ Regressand / erklärte)
+Variable genannt und <span class="arithmatex">\(X\)</span> unabhängige (predictor / covariate / feature / control / erklärende), 
+was hat nichts mit stochastischer Abhängigkeit zu tun. Das Vorgehen ist nun, da <span class="arithmatex">\(f(X)\)</span> unbekannt
+ist, aufgrund von Daten (bzw. einer Stichprobe) <span class="arithmatex">\(f\)</span> durch eine Funktion <span class="arithmatex">\(\hat f\)</span> zu schätzen. 
+D.h. es wird ein <em>Populationsmodell</em> angenommen, 
+welches dann (bzw. die unbekannten Parameter) geschätzt werden. </p>
+<p>Anders ausgedrückt: (hauptsächlich in der Ökonometrie) interessiert </p>
+<div class="arithmatex">\[ E(y \vert x) \]</div>
+<p>der bedingte Erwartungswert. </p>
+<h2 id="bivariate-regression">Bivariate Regression</h2>
+<p>Die bivariate Regression beschreibt den Zusammenhang von <strong>zwei</strong> Variabeln. Als Populationsmodell wird angenommen:</p>
+<div class="arithmatex">\[ y = \beta_0 + \beta_1 x + \epsilon\]</div>
+<p>Dabei wird angenommen, dass in der Population gilt:</p>
+<ol>
+<li><span class="arithmatex">\(E(\epsilon) = 0\)</span>, d.h. im Schnitt spielt Zufall keine Rolle. </li>
+<li><span class="arithmatex">\(E(\epsilon \vert x) = 0\)</span>, d.h. im Schnitt ist der Störterm gleich über alle Werte von <span class="arithmatex">\(x\)</span>. <span class="arithmatex">\(\epsilon\)</span> und <span class="arithmatex">\(x\)</span> sind <strong>mean independent</strong> (jedoch nicht stochastisch unabhängig). Dadurch werden <em>ceteris paribus</em> interpretation möglich, weil so <span class="arithmatex">\(\epsilon\)</span> unverändert bleibt, wenn <span class="arithmatex">\(x\)</span> sich verändert. Dies impliziert <span class="arithmatex">\(Cov(x,\epsilon) = E(x\epsilon) = 0\)</span> (aber nicht umgekehrt), ist aber eine stärkere Annahme da Kovarianz nur ein lineares Mass ist. </li>
+</ol>
+<p>Dadurch kann man auch die <strong>population regression function (PRF)</strong> herleiten:</p>
+<div class="arithmatex">\[E(y\vert x) = \beta_0  +\beta_1 x\]</div>
+<p>da gilt <span class="arithmatex">\(E(\epsilon \vert x) = 0\)</span>. Dies ist eine <em>lineare Funktion</em>, deshalb ergibt sich: eine Einheit Veränderung von <span class="arithmatex">\(x\)</span>
+ändert den Erwartungswert von <span class="arithmatex">\(y\)</span> um <span class="arithmatex">\(\beta_1\)</span>.</p>
+<p>Nun will man die Parameter <span class="arithmatex">\(\beta_0\)</span> und <span class="arithmatex">\(\beta_1\)</span> mithilfe einer Stichprobe schätzen (meistens ist nur <span class="arithmatex">\(\beta_1\)</span> 
+interessant). Die Schätzer können mithilfe der <strong>Momenten-Methode</strong> oder der <strong>Kleinsten Quadrate Methode (OLS)</strong> 
+hergeleitet werden.</p>
+<p>Dadurch ergibt sich für <span class="arithmatex">\(\beta_1\)</span>:</p>
+<div class="arithmatex">\[\hat \beta_1 = \frac{Cov(x,y)}{Var(x)}\]</div>
+<p><strong>Interpretation:</strong> Im bivariaten Fall ist eine kausale Interpretation unwahrscheinlich (ausser bei randomisierten 
+Experimenten). Deshalb: eine Veränderung von <span class="arithmatex">\(x\)</span> um eine Einheit ist <strong>assoziiert</strong> mit einer Veränderung von 
+<span class="arithmatex">\(\hat y\)</span> um <span class="arithmatex">\(\hat \beta_1\)</span>.</p>
+<p><strong>Goodness-of-fit (<span class="arithmatex">\(R^2\)</span>):</strong>
+Ein Mass für die Güte der Regression, gibt an, wie gut die geschätzte Regressionslinie die Stichprobe beschreibt: </p>
+<div class="arithmatex">\[ R^2 = \frac{\sum_{i=1}^n (\hat y_i - \bar y)^2}{\sum_{i=1}^n (y_i - \bar y)^2} = 1 - \frac{\sum_{i=1}^n \hat u_i^2}{\sum_{i=1}^n (y_i - \bar y)^2}\]</div>
+<p>mit <strong>fitted values</strong> <span class="arithmatex">\(\hat y_i\)</span>, Residuen <span class="arithmatex">\(\hat u_i\)</span>, Stichprobenwerte <span class="arithmatex">\(y_i\)</span>, und Stichprobenmittelwert <span class="arithmatex">\(\bar y\)</span>. </p>
+<p><strong>Statistische Eigenschaften des OLS Schätzers:</strong>  </p>
+<ul>
+<li>Erwartungstreue (Unbiasedness): <span class="arithmatex">\(E(\hat \beta) = \beta\)</span> (ist erfüllt gegeben 4 Annahmen, am wichtigsten wenn <span class="arithmatex">\(E(u\vert x) = 0\)</span>)</li>
+<li>Konsistenz: wenn <span class="arithmatex">\(n \to \infty\)</span>, dann <span class="arithmatex">\(\hat \beta \to \beta\)</span></li>
+<li>Effizienz: Varianz des Schätzers soll möglichst klein sein<ul>
+<li>Übliche Annahme: <strong>Homoskedastizität</strong> <span class="arithmatex">\(Var(u\vert x) = \sigma^2\)</span>, d.h. die Varianz des Fehlerterms ist konstant für alle <span class="arithmatex">\(x\)</span>.</li>
+<li><strong>Fehlervarianz (error variance)</strong> <span class="arithmatex">\(\sigma^2\)</span>. <strong>Standardabweichung des Fehlers</strong> <span class="arithmatex">\(\sigma\)</span></li>
+<li>Mithilfe der Fehlervarianz, kann die Stichprobenvarianz der Schätzer <span class="arithmatex">\(Var(\hat \beta_1)\)</span> und <span class="arithmatex">\(Var(\hat \beta_0)\)</span> hergeleitet werden. Dazu braucht man einen Schätzer <span class="arithmatex">\(\hat \sigma^2\)</span>.</li>
+<li><strong>Root Mean Squared Error (RMSE)</strong>: <span class="arithmatex">\(\hat \sigma = \sqrt{\hat \sigma^2}\)</span>, <strong>Standardfehler <span class="arithmatex">\(\hat \beta_1\)</span></strong> <span class="arithmatex">\(se(\hat \beta_1) = \hat \sigma / \sqrt{\sum(x_i - \bar x)^2}\)</span></li>
+<li><strong>Heteroskedastizität</strong>: OLS Schätzer auch unbiased, aber Standardfehler des Schätzers sind verzerrt</li>
+</ul>
+</li>
+</ul>
+<p><strong>Funktionale Form:</strong><br>
+Die Parameter verändern sich folgendermassen, wenn die Masseinheiten geändert werden:</p>
+<ul>
+<li>Veränderung von <span class="arithmatex">\(y\)</span>, mit <span class="arithmatex">\(\tilde y = c \cdot y\)</span>, verändern sich die Parameter mit Faktor <span class="arithmatex">\(c\)</span>, also <span class="arithmatex">\(c \cdot \beta\)</span></li>
+<li>Veränderung von <span class="arithmatex">\(x\)</span>, mit <span class="arithmatex">\(\tilde x = d \cdot x\)</span>, verändern sich die Parameter mit Faktor <span class="arithmatex">\(1/d\)</span>, also <span class="arithmatex">\(1/d \cdot \beta\)</span></li>
+</ul>
+<p><strong>Modellierung von nicht-linearen Zusammenhängen:</strong>  </p>
+<table>
+<thead>
+<tr>
+<th>Modell</th>
+<th>Abhängige Variable</th>
+<th>Unabhängige Variable</th>
+<th>Interpretation von <span class="arithmatex">\(\beta_1\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>level-level</td>
+<td>y</td>
+<td>x</td>
+<td><span class="arithmatex">\(\Delta y = \beta_1 \Delta x\)</span></td>
+</tr>
+<tr>
+<td>level-log</td>
+<td>y</td>
+<td>ln(x)</td>
+<td><span class="arithmatex">\(\Delta y = (\beta_1/100)\% \Delta x\)</span></td>
+</tr>
+<tr>
+<td>log-level</td>
+<td>ln(y)</td>
+<td>x</td>
+<td><span class="arithmatex">\(\% \Delta y = 100 \beta_1 \Delta x\)</span></td>
+</tr>
+<tr>
+<td>log-log</td>
+<td>ln(y)</td>
+<td>ln(x)</td>
+<td><span class="arithmatex">\(\% \Delta y = \beta_1 \% \Delta x\)</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="multiple-regression">Multiple Regression</h2>
+<p>Die bivariate Fall ist meistens die Ausnahme, da meistens mehrere Faktoren einen Einfluss auf <span class="arithmatex">\(y\)</span> haben. Werden nicht
+alle Faktoren berücksichtigt, so ist die Schätzung (von <span class="arithmatex">\(\beta_1\)</span>) verzerrt, d.h. der Einfluss von <span class="arithmatex">\(x_1\)</span> wird über- oder
+unterschätzt. Für eine unverzerrte Schätzung, müssen deshalb alle relevanten Faktoren berücksichtigt werden, ausser
+diese sind <strong>unkorreliert</strong> mit <span class="arithmatex">\(x_1\)</span>.</p>
+<p>In den meisten Fällen ist man nur am Parameter <span class="arithmatex">\(\beta_1\)</span> interessiert und die restlichen Variabeln werden als <em>Kontrollvariabeln</em>
+eingeführt. Die OLS Mechanik würde jedoch eine <em>ceteris paribus</em> Interpretation für alle Variabeln erlauben. </p>
+<p>Das bivariate Modell kann erweitert werden mit: </p>
+<div class="arithmatex">\[y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_k  x_k + u\]</div>
+<p>Die Schätzer für die Parameter können analog dem bivarianten Modell mit OLS hergeleitet werden. </p>
+<p><strong>Ceteris paribus</strong><br>
+Die Mechanik von OLS (unbgeründet ??) stellt sicher, dass eine <strong>ceteris paribus</strong> Interpretation möglich ist. D.h. 
+wie verändert sich <span class="arithmatex">\(y\)</span>, wenn sich <span class="arithmatex">\(x_1\)</span> verändert, gegeben <em>alle anderen Faktoren bleiben gleich</em> (diese Interpretation
+ist für alle <span class="arithmatex">\(x\)</span> möglich, aber meistens interessiert nur <span class="arithmatex">\(x_1\)</span>). Diese Interpretation stimmt selbst dann, wenn gilt: 
+<span class="arithmatex">\(E(u \vert x_1, x_2, ..., x_k) \neq 0\)</span>. Gilt hingegen: <span class="arithmatex">\(E(u \vert x_1, x_2, ..., x_k) = 0\)</span>, so werden <strong>kausale</strong> 
+Interpretationen möglich. </p>
+<p>Die Mechanik von OLS stellt ausserdem sicher, dass <span class="arithmatex">\(\beta_1\)</span> nur der Anteil vom Effekt von <span class="arithmatex">\(x_1\)</span> auf <span class="arithmatex">\(y\)</span> quantifiziert, 
+der mit den anderen Faktoren <span class="arithmatex">\(x_2,..., x_k\)</span> unkorreliert ist.</p>
+<p>"Alle anderen Faktoren fixiert halten" bedeutet hier, dass durch die Mechanik der Regression nur ein Datensatz verwendet
+werden kann und nicht jeder Faktor einzeln erhoben werden muss. </p>
+<p><strong>Achtung:</strong> eine ceteris paribus Interpretation ist aber logisch nicht immer möglich, d.h. wenn gewisse <span class="arithmatex">\(x\)</span> voneinander
+abhängig sind. </p>
+<p><strong>Eigenschaften des Schätzers</strong><br>
+Der OLS Schätzer ist <strong>erwartungstreu</strong> unter folgenden Annahmen:</p>
+<ul>
+<li>Populationsmodell ist linear in Parametern</li>
+<li>Zufallsstichprobe der Grösse <span class="arithmatex">\(n\)</span> aus Population</li>
+<li>Der Störterm <span class="arithmatex">\(u\)</span> hat den Erwartungswert Null gegeben alle Werte der unabhängigen Variabeln (<span class="arithmatex">\(E(u \vert x_1, x_2, ..., x_k) = 0\)</span>)</li>
+<li>Keines der <span class="arithmatex">\(x\)</span> ist konstant und es gibt keine exakte lineare Beziehung zwischen den <span class="arithmatex">\(x\)</span> (keine perfekte Multikolinarität)</li>
+</ul>
+<p>Unter der zusätzlichen Annahme (zusammengenommen <strong>Gauss-Markov</strong>)</p>
+<ul>
+<li>Homoskedastizität <span class="arithmatex">\(Var(u\vert x_1, x_2, ..., x_k)= \sigma^2\)</span></li>
+</ul>
+<p>ist der OLS Schätzer der Schätzer mit der kleinsten Varianz unter allen erwartungstreuen, linearen Schätzern. </p>
+<p>Aber: </p>
+<ul>
+<li>je grösser Fehlervarianz <span class="arithmatex">\(\sigma^2\)</span>, desto grösser die Varianz des OLS Schätzers (d.h. desto unpräziser)</li>
+<li>grösser Stichprobengrösse <span class="arithmatex">\(n\)</span> reduziert Varianz des OLS Schätzers</li>
+<li>Problem Multikoliniarität: je grösser <span class="arithmatex">\(R_j^2\)</span>, desto mehr Variation von <span class="arithmatex">\(x_j\)</span> wird durch die anderen <span class="arithmatex">\(x\)</span> erklärt; d.h. desto unpräziser wird die Schätzung (da nur der unkorrelierte Teil verwendet wird für die Schätzung); aber: Multikolinarität ist keine Verletzung von Gauss-Markov; bedeutet oft: Modell ist nicht richtig spezifiziert</li>
+</ul>
+<p><strong>Omitted Variable Bias</strong><br>
+Werden nicht alle relevanten Faktoren (auf <span class="arithmatex">\(y\)</span>) in der Regression berücksichtigt, führt dies zu einem Omitted 
+Variable Bias. D.h. der Schätzer <span class="arithmatex">\(\beta_1\)</span> ist verzerrt und unter- oder oberschätzt den Effekt von <span class="arithmatex">\(x_1\)</span> auf <span class="arithmatex">\(y\)</span>.
+Unberücksichtigte Faktoren haben nur dann keinen verzerrenden Effekt, wenn sie entweder <strong>unkorreliert</strong> mit <span class="arithmatex">\(x_1\)</span>
+sind oder keinen Einfluss auf <span class="arithmatex">\(y\)</span> haben. </p>
+<p><strong>Aber Achtung:</strong> blindes Einfügen von zahlreichen <em>recht-hand</em> Variabeln kann zu <strong>bad controls</strong> führen, welche (zwar
+nicht zu einem verzerrt Schätzer führen), aber eine kasuale Interpretation verhindern. Bspw. wenn gewisse Faktoren 
+voneinander Abhängig sind. </p>
+<h2 id="kausale-analyse-mit-einer-dummy-variabel">Kausale Analyse (mit einer Dummy Variabel)</h2>
+<p>Eine Regression mit einer Dummy Variabel (0 oder 1 als Outcome), kann unter Umständen kausal interpretiert werden. Dazu
+wird die Welt in zwei Gruppen geteilt: die <strong>treatment Gruppe</strong> (welche eine Invernention erhalten hat) und die 
+<strong>Kontrollgruppe</strong> welche keine Intervention erhalten hat. Der Effekt der Intervention (<strong>treatment effect</strong>) wäre dann
+Ergebnis treatment minus Ergebnis Kontroll. </p>
+<p>Keine Beobachtung kann aber gleichzeitig in beiden Gruppen sein. Deshalb führt man sogenannte <em>potentielle Ergebnisse</em>
+(<strong>counterfactual or potential outcome</strong>) ein. <span class="arithmatex">\(y_i(1)\)</span> sind die individuellen Ergebnisse mit Treatment und <span class="arithmatex">\(y_i(0)\)</span> 
+ohne Treatment. Der individuelle Treatmenteffekt ist dann gegeben durch: </p>
+<div class="arithmatex">\[ te_i = y_i(1) - y_i(0)\]</div>
+<p>bzw. der <strong>Average Treatment Effect ATE</strong>:</p>
+<div class="arithmatex">\[ t_{ate} = E[y_i(1)] - E[y_i(0)]\]</div>
+<p><strong>Konstanter (bzw. gleichverteilter) Treatmenteffekt</strong><br>
+Angenommen, der individuelle Treatmenteffekt ist <strong>konstant</strong> mit <span class="arithmatex">\(te_i = \tau\)</span>, kann basierend darauf ein 
+Regressionsmodell für die Population hergleitet werden:</p>
+<div class="arithmatex">\[y_i = \beta_0 + \beta_1 d_i + u \text{ mit } \beta_1 = \tau\]</div>
+<p>Damit der OLS Schätzer unverzerrt ist muss gelten <span class="arithmatex">\(E[u_i(0) \vert d_i] = 0\)</span>. Damit kann man herleiten, dass gelten
+muss <span class="arithmatex">\(E[y_i(0)\vert d_i] = E[y_i(0)]\)</span>, d.h. das potentielle Ergebniss <span class="arithmatex">\(y_i(0)\)</span> muss unabhängig von Treatment <span class="arithmatex">\(d_i\)</span>, also
+<span class="arithmatex">\(E[y_i(0)]\)</span> ist in der Kontroll- und Treatmentgruppe gleich gross (??).</p>
+<p><strong>Nicht konstanter Treatmenteffekt:</strong> ist der Treatmenteffekt nicht konstant über die Population, so muss zudem gelten, 
+dass <span class="arithmatex">\(E[y_i(1)\vert d_i] = E[y_i(1)]\)</span>, d.h. <em>beide</em> potentiellen Ergebnisse müssen stochastisch unabhängig sein 
+von <span class="arithmatex">\(d_i\)</span>.</p>
+<p><strong>Achtung:</strong> Dies ist üblicherweise nur der Fall bei einem randomisierten Experiment. </p>
+<p><strong>Nicht randomisierte Daten</strong><br>
+Effekt kann dann <em>kausal</em> interpretiert werden, wenn die <strong>Conditional Independence Assumption (CIA)</strong> gilt. D.h. man 
+kann gleichzeitig alle Faktoren <span class="arithmatex">\(x\)</span> beobachten, die gleichzeitig die potentiellen Ergebnisse und die Entscheidung für das
+Treatment beeinflussen. Formal <span class="arithmatex">\([y_i(0), y_i(1)]{\perp \!\!\! \perp} d_i\vert x\)</span></p>
+<p><strong>Konstanter Treatmenteffekt:</strong> Angenommen der Treatmenteffekt ist konstant über die Population mit <span class="arithmatex">\(\tau\)</span> <em>und</em> 
+<span class="arithmatex">\(E[y_i(0) \vert x_i]\)</span> kann als lineare Funktion geschrieben werden, so gilt für die Regression</p>
+<div class="arithmatex">\[y_i = \alpha + \tau d_i + \textbf{x} \gamma + v_i\]</div>
+<p>Wichtig hierbei: die schwächere Annahme CIA fokussiert auf die Identifizierung eines kausalen Effekts von <span class="arithmatex">\(d\)</span> und nicht
+auf die Identzifizerung aller Effekte. D.h. <span class="arithmatex">\(x\)</span> sind nur <strong>Kontrollvariabeln</strong> und die Parameter haben keine kausale
+Interpretation. <span class="arithmatex">\(x\)</span> darf keine <strong>Mediatoren</strong> (ist bad control) enthalten, d.h. Variabeln, die selbst Ergebnis des Treatments sind. </p>
+<h2 id="inferenz">Inferenz</h2>
+<p>Unter den Gauss-Markov Annahmen ist OLS der Best Linear Unbiased Estimator (nicht bewiesen?), d.h. <strong>erwartungstreu</strong>
+und <strong>minimale Varianz</strong>. Für Tests braucht man aber eine komplette Verteilung des Schätzers, deshalb führt man eine
+weitere (sehr starke) Annahme ein: <strong>Normalität</strong>, d.h. der Fehlerterm in der Population ist unabhängig von den 
+erklärenden Variablen und <strong>normalverteilt</strong>, also <span class="arithmatex">\(u \sim N(0, \sigma^2)\)</span>. Zusammengenommen werden diese Annahmen
+als klassische Annahmen für lineare Modelle bezeichnet (CLM).</p>
+<p>Testen:<br>
+Für das Durchführen der von Hypothesentest gilt unter den oben aufgeführten Annahmen, die folgende Teststatistik:</p>
+<div class="arithmatex">\[(\hat \beta_j - \beta_j)/se(\hat \beta_j) \sim t_{n-k-1}\]</div>
+<p>D.h. da die Standardabweichung in der Population unbekannt ist, kann diese nur durch <span class="arithmatex">\(\hat \sigma\)</span> geschätzt werden, 
+was zu einer <span class="arithmatex">\(t\)</span>-Verteilung führt. </p>
+<p>Danach kann mithilfe des kritischen Werts, des <span class="arithmatex">\(p\)</span>-Werts, oder eines Konfidenzintervalls ein Test durchgeführt werden.</p>
+<p>Für das Testen von multiplen Hypothesen kann ein <span class="arithmatex">\(F\)</span>-Test verwendet werden (??).</p>
+<h2 id="funktionale-form">Funktionale Form</h2>
+<p><strong>Natürlicher Logarithmus</strong><br>
+Wird oft eingesetzt, wenn <span class="arithmatex">\(y\)</span> heteroskedastisch oder schief. Reduziert den Einfluss von Outlier. Interpretation 
+vom Effekt auf <span class="arithmatex">\(y\)</span> ändert sich (entweder Elastizität oder prozentuale Veränderung).</p>
+<p><strong>Quadratische Modelle</strong><br>
+Verwendet um den marginalen Effekt einer Variable zu bestimmen. </p>
+<p><strong>Interaktionsterme</strong><br>
+Wird verwendet wenn der Effekt einer Variable vom Wert einer anderen Variable abhängt. </p>
+<h2 id="anpassungsgute">Anpassungsgüte</h2>
+<p><span class="arithmatex">\(R^2\)</span> steigt immer, wenn mehr Regressoren ins Modell eingeführt werden. Deshalb adjusted <span class="arithmatex">\(R^2\)</span>: <span class="arithmatex">\(\bar R^2\)</span>.
+Damit können zwei <em>ungenestete</em> Modelle miteinander verglichen werden. <strong>Aber</strong> nicht nur auf Anpassungsgüte 
+konzentrieren: wenn ökonomische Theorie sagt, dass eine Variable ins Modell gehört, dann muss sie vorkommen. 
+Aber aufpassen auch für "bad controls".</p></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../glossary_basics/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Glossar">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Glossar
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../open_questions_regression/" class="md-footer__link md-footer__link--next" aria-label="Next: Offene Fragen">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Offene Fragen
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.footer", "toc.follow", "navigation.sections"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

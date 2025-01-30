@@ -1,0 +1,2604 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://sitename.example/fundamentals/part3_supervised_learning/">
+      
+      
+        <link rel="prev" href="../part2_data_visualization/">
+      
+      
+        <link rel="next" href="../part4_unsupervised_learning/">
+      
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Part 3 - Supervised Learning - My MkDocs Material Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a40c8224.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i%7CRed+Hat+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Merriweather Sans";--md-code-font:"Red Hat Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#part-3-supervised-learning" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="My MkDocs Material Documentation" class="md-header__button md-logo" aria-label="My MkDocs Material Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My MkDocs Material Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Part 3 - Supervised Learning
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="My MkDocs Material Documentation" class="md-nav__button md-logo" aria-label="My MkDocs Material Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    My MkDocs Material Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Notebook
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Probability
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Probability
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../probability/probability_math/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mathematical Probability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../probability_basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Probability Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Statistics Basics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Statistics Basics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../descriptive/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deskriptive Statistik
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../distributions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Verteilungen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inference/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Schliessende Statistik
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mathematical_stats/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mathematische Statistik
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../open_questions_stats/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Offene Fragen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary_basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossar
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Ökonometrie
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Ökonometrie
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lin_reg/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lineare Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../open_questions_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Offene Fragen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    A/B Testing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            A/B Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../a_b_testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A/B Testing Übersicht
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Metriken
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Experimentdesign
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../open_questions_AB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Offene Fragen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Machine Learning
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Machine Learning
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../open_questions_ML/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Offene Fragen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Offene Fragen
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Offene Fragen
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../openquestions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Allgemeine Offene Fragen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    SSO
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            SSO
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sso/skills_normal_distribution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Working with normal distributions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sso/skills_estimating/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Estimating
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sso/skills_hypothesis_testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hypothesis testing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sso/skills_two_samples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inferences Two Samples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sso/skills_nonparametric_tests/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nonparametric Tests
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sso/skills_contingency_tables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contingency Tables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sso/skills_linear_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Simple linear regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sso/ilo_problems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    (Integer) linear optimization problems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sso/exam_prep_statistics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exam prep stats
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sso/exam_prep_so/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exam prep so
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sso/questions_content_skills/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Questions Contents & Skills
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    AFCS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            AFCS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../afcs/cheatsheet_r/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cheatsheet R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../afcs/intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch. 1 Intro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../afcs/ts_graphics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch. 2 Time Series Graphics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../afcs/ts_decomp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch. 3 Time Series Decomposition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../afcs/features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch. 4 Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../afcs/forecast_toolbox/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch. 5 Forecasting Toolbox
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../afcs/regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch. 7 Time Series Regregression models
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../afcs/smoothing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch. 8 Exponential Smoothing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../afcs/arima/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch. 9 ARIMA models
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../afcs/dynamic_reg_models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch. 10 Dynamic regression models
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../afcs/hierarchical/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch. 11 Hierarchical and grouped time series
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Fundamentals
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            Fundamentals
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cheat Sheet Numpy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cheat Sheet Pandas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../questions_literature/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Questions Literature
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part1_eda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 1 - Life-cycle, EDA, Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part2_data_visualization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 2 - Data Visualization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Part 3 - Supervised Learning
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Part 3 - Supervised Learning
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview-machine-learning-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview Machine Learning classification
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bias-variance-trade-off" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bias-Variance trade-off
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feature-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature engineering
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-accuracy-and-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model accuracy and validation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regression-linear-regression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regression: Linear regression
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classification-logistic-regression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classification: Logistic regression
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classification-generative-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classification: Generative Models
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classification-naive-bayes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classification: Naive Bayes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classification-k-nearest-neighbour-knn" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classification: k-nearest neighbour (kNN)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classification-decicion-trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classification: Decicion Trees
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classification-ensemble-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classification: Ensemble Methods
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#link-prediction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Link prediction
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part4_unsupervised_learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 4 - Unsupervised Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part5_ethics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 5 - Ethics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    AML
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            AML
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aml/deep_learning_basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Neural Networks Essentials
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aml/convolution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution Networks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aml/architectures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Architectures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aml/state_of_art/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    State of the Art
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aml/rl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reinforcement Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aml/questions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Questions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Causal
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            Causal
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../causal/lectures/lecture1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../causal/lectures/lecture2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../causal/lectures/lecture3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../causal/lectures/lecture4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../causal/lectures/lecture5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../causal/exam_prep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exam summary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview-machine-learning-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview Machine Learning classification
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bias-variance-trade-off" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bias-Variance trade-off
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feature-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature engineering
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-accuracy-and-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model accuracy and validation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regression-linear-regression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regression: Linear regression
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classification-logistic-regression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classification: Logistic regression
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classification-generative-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classification: Generative Models
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classification-naive-bayes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classification: Naive Bayes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classification-k-nearest-neighbour-knn" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classification: k-nearest neighbour (kNN)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classification-decicion-trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classification: Decicion Trees
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classification-ensemble-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classification: Ensemble Methods
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#link-prediction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Link prediction
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<div><h1 id="part-3-supervised-learning">Part 3: Supervised Learning</h1>
+<h2 id="overview-machine-learning-classification">Overview Machine Learning classification</h2>
+<p>General task, there is some unkown, general relationship in the data:</p>
+<div class="arithmatex">\[ Y = f(X) + \epsilon\]</div>
+<p>We can only estimate this by:</p>
+<div class="arithmatex">\[ \hat Y = \hat f(X)\]</div>
+<p><strong>Goal:</strong> find best estimation of <span class="arithmatex">\(f\)</span> (most accurate)</p>
+<p><strong>Why?</strong> to make <em>predictions</em> and <em>inferences</em></p>
+<p><strong>Two methods</strong>  </p>
+<ul>
+<li><em>Parametric</em>: two stages: 1) make assumption about functional form or shape of <span class="arithmatex">\(f\)</span>, 2) fit data to model</li>
+<li><em>Non-parametric</em>: not make assumptions about <span class="arithmatex">\(f\)</span>, just fit data to model</li>
+</ul>
+<p>Two types of problems: </p>
+<ul>
+<li><em>Supervised Learning</em>: labeled data, i.e. data + response <span class="arithmatex">\(y\)</span>; <em>classification</em>: discrete data and <em>regression</em> for continuous data</li>
+<li><em>Unsupervised Learning</em>: unlabeled data, i.e. only data without a response <span class="arithmatex">\(y\)</span>; trying to infer structure</li>
+</ul>
+<p><strong>Overview methods</strong>:
+<img src="/images/overview_supervised.png" alt="test-training MSE" height="auto"></p>
+<h2 id="bias-variance-trade-off">Bias-Variance trade-off</h2>
+<p><em>Accuracy</em> describes how good the model is on predictions. <em>Flexibility</em> describes how <em>flexibel</em> a model is, that is, 
+what kind of shapes for <span class="arithmatex">\(f\)</span> it allows. More flexible models can lead to higher accuracy (less <em>bias</em>). But there are 
+several trade-offs: </p>
+<p><strong>Interpretability vs. flexibility</strong>  </p>
+<ul>
+<li>Higher flexibility (lower bias, higher complexity) leads to lower interpretability and vice versa. </li>
+</ul>
+<p><strong>Bias vs. variance</strong><br>
+<em>Bias</em> describes how much error is introduced by a certain model. <em>Variance</em> describes how much the estimation of <span class="arithmatex">\(f\)</span>
+will change if the underlying data changes. It holds: </p>
+<ul>
+<li>High bias + low variance</li>
+<li>Low bias + high variance</li>
+<li>More flexibility leads to low bias and high variance</li>
+</ul>
+<p>Best model: finds "sweat spot" between bias and variance</p>
+<p><img alt="Bias Variance trade-off" src="images/tradeoff_bias_variance.png"></p>
+<p><strong>Under-fitting vs. overfitting</strong></p>
+<ul>
+<li>Under-fitting: model complexetiy not high enough to capture <span class="arithmatex">\(f(X)\)</span> (high bias)</li>
+<li>Over-fitting: model complexity too high, following error in training set too closely, missing the point</li>
+</ul>
+<p><strong>Prevent over-fitting: Regularization</strong><br>
+Use <strong>regularization</strong> to prevent-overfitting. It is the process of penalizing large values of model parameters (through
+introduction of a loss function). </p>
+<p>In case of linear regression, there are two options: </p>
+<ul>
+<li><strong>Ridge regularization</strong>: Quadratic function <span class="arithmatex">\(\lambda \sum_{j=1}^p \beta_j^2\)</span></li>
+<li><strong>Lasso regularization</strong>: forces some coefficients to 0, <span class="arithmatex">\(\lambda \sum_{j=1}^p \vert \beta_j \vert\)</span></li>
+</ul>
+<h2 id="feature-engineering">Feature engineering</h2>
+<p>Feature engineering = process of creating or transforming features.</p>
+<p><strong>Qualitative features:</strong>  </p>
+<ul>
+<li>e.g. one-hot encoding</li>
+<li>use <code>from sklearn.feature_extraction import DictVectorizer</code></li>
+</ul>
+<p><strong>Text features:</strong>  </p>
+<ul>
+<li>tf-idf: term-frequency inverse-document-frequency</li>
+<li>use <code>stopwords</code></li>
+<li>use <code>regex</code></li>
+<li>use <code>from sklearn.feature_extraction.text import TfidfVectorizer</code></li>
+</ul>
+<p>Polynomial features:  </p>
+<ul>
+<li><code>from sklearn.preprocessing import PolynomialFeatures</code></li>
+</ul>
+<p><strong>Imputer:</strong>  </p>
+<ul>
+<li><code>from sklearn.preprocessing import Imputer</code> e.g. to impute <code>mean</code></li>
+</ul>
+<p><strong>Pipeline:</strong>  </p>
+<pre><code>from sklearn.pipeline import make_pipeline
+
+model = make_pipeline(Imputer(strategy='mean'),
+                      PolynomialFeatures(degree=2),
+                      LinearRegression())
+</code></pre>
+<h2 id="model-accuracy-and-validation">Model accuracy and validation</h2>
+<p>To measure a model's performance (accuracy), different measures can be used:</p>
+<ul>
+<li><strong>Regression</strong>: <em>mean squared error (MSE)</em>, i.e. <span class="arithmatex">\(\frac{\sum_{i=1}^n(\hat y_i - y_i)^2}{n}\)</span></li>
+<li><strong>Classification:</strong> <em>error rate</em>, i.e. <span class="arithmatex">\(\frac{1}{n}\sum_{i=1}^n I(y_i \neq \hat y_i)\)</span></li>
+</ul>
+<p><strong>Relationship training, validation, and test accuracy</strong><br>
+The MSE is computed based on the test data, but we are interested in <em>test</em> MSE instead of <em>training</em> MSE. Often, test 
+data is not available and the <em>test</em> MSE has to be estimated. Furthermore, increasing model flexibility leads to a lower
+<em>training</em> MSE but not necessarily a lower <em>test</em> MSE. </p>
+<p><img src="/images/test_training_MSE.png" alt="test-training MSE" width="50%" height="auto"></p>
+<p><strong>Relationship to bias and variance</strong><br>
+The <em>expected MSE</em> can be decomposed into <em>variance</em> of <span class="arithmatex">\(\hat f(x_0)\)</span>, squared <em>bias</em> of  <span class="arithmatex">\(\hat f(x_0)\)</span>, and the <em>variance 
+of the error term</em> <span class="arithmatex">\(var(\epsilon)\)</span>. The best method, therefore, will minimize simultanuously the <em>variance</em> and the squared
+<em>bias</em> of <span class="arithmatex">\(f\)</span>. But the expected MSE can never lie below <span class="arithmatex">\(var(\epsilon)\)</span>. Both quantities determine the MSE:</p>
+<p><img src="/images/bias_variance_mse.png" alt="test-training MSE" height="auto"></p>
+<p><strong>Cross-validation</strong><br>
+In practice, test data is often not available. We, therefore, need a method to estimate the test MSE. Usually, a <strong>validation</strong>
+or <strong>hold-out</strong> set is used: data is trained on <em>training</em> set and then predicted on <em>validation</em> set to estimate 
+the MSE.</p>
+<p>Different methods can be used:</p>
+<ul>
+<li><em>Hold-out set</em>: just one set used as validation; problems: just one estimate + data loss for training</li>
+<li><em>Leave-One-Out Cross-Validation</em>: estimates MSE <span class="arithmatex">\(n\)</span> times and always leaves one data point out, then calculates average MSE; problem: computationaly intensive</li>
+<li><em>k-fold cv</em>: defined number of partitions of hold-outs sets, average MSE calculated</li>
+</ul>
+<p><strong>Scikit-learn</strong>  </p>
+<p>Split training set in training-validation data (confusingly, <code>test</code>): </p>
+<pre><code>from sklearn.cross_validation import train_test_split
+# split the data with 50% in each set
+X1, X2, y1, y2 = train_test_split(X, y, random_state=0,
+                                  train_size=0.5)
+</code></pre>
+<p>k-fold cv: </p>
+<pre><code>from sklearn.cross_validation import cross_val_score
+cross_val_score(model, X, y, cv=5)
+</code></pre>
+<p>leave one out cv: </p>
+<pre><code>from sklearn.cross_validation import LeaveOneOut
+scores = cross_val_score(model, X, y, cv=LeaveOneOut(len(X)))
+scores
+</code></pre>
+<p><strong>Learning curves</strong><br>
+Plot of training/ validation with respect to size of training data:
+<img src="/images/learning_curve.png" alt="test-training MSE" width="50%" height="auto"></p>
+<p><strong>Confusion matrix</strong><br>
+<img src="/images/confusion_matrix.png" alt="test-training MSE" height="auto"></p>
+<p>Definitions:</p>
+<ul>
+<li><strong>Sensitivity</strong> or <strong>True Positive Rate</strong>: <span class="arithmatex">\(\frac{TP}{TP+FN}\)</span>; fraction of actual positives that were predicted positive; how good is a classifier in detecting positives?</li>
+<li><strong>Specificity</strong> or <strong>True negative rate</strong>: <span class="arithmatex">\(\frac{TN}{TN+FP}\)</span>; fraction of actual negatives that were predicted negative;  how good is a classifier in detecting negatives?</li>
+<li><strong>Precision:</strong> <span class="arithmatex">\(\frac{TP}{TP + FP}\)</span>; fraction of actual positives of all positively predicted, or: of all positively predicted labels, what fraction was actual positive?</li>
+<li><strong>Accuracy</strong>: <span class="arithmatex">\(\frac{TP + TN}{TP +TN + FP + FN}\)</span></li>
+<li><strong>False positive rate</strong>: <span class="arithmatex">\(\frac{FP}{FP+TN}\)</span> or <span class="arithmatex">\(1-specificity\)</span>, fraction of false positives of all actual negative cases; how prone is a classifier to falsly identify negatives as positives?</li>
+<li><strong>False negative rate</strong>: <span class="arithmatex">\(\frac{FN}{FN+TP}\)</span> or <span class="arithmatex">\(1-sensitvitiy\)</span>, fraction of false negatives of all actual positive cases; how prone is a classifier to falsly identify positives as negatives?</li>
+</ul>
+<p>Cases:</p>
+<ul>
+<li>Poisenous mushrooms: cannot afford TN, therefore, maybe have lower "threshold", e.g. <span class="arithmatex">\(P(C \vert x)\)</span></li>
+<li>Malicious content: contenious to have FP</li>
+</ul>
+<p><strong>Type of errors</strong><br>
+FPR is equivalent to a <em>type I error</em> (<span class="arithmatex">\(\alpha\)</span>), and FNR is equivalent to <em>type II error</em> (<span class="arithmatex">\(\beta\)</span>).</p>
+<p><strong>ROC curve</strong><br>
+For a given threshold, classifiers have always a <em>trade-off</em> between TPR and FPR (or sensitivity and specificity). The
+ROC curve shows this trade-off for all possible thresholds:
+<img src="/images/roc.png" alt="test-training MSE" height="auto" width="50%">
+<img src="/images/auc.png" alt="test-training MSE" height="auto" width="50%"></p>
+<p>The higher AUC, the better the classifier. </p>
+<h2 id="regression-linear-regression">Regression: Linear regression</h2>
+<p><strong>Simple linear regression</strong></p>
+<pre><code>from sklearn.linear_model import LinearRegression
+model = LinearRegression(fit_intercept=True)
+
+model.fit(x[:, np.newaxis], y)
+
+xfit = np.linspace(0, 10, 1000)
+yfit = model.predict(xfit[:, np.newaxis])
+
+plt.scatter(x, y)
+plt.plot(xfit, yfit);
+</code></pre>
+<p><strong>Problems</strong>  </p>
+<ul>
+<li>more than 1 predictor</li>
+<li>categorical predictors</li>
+<li>non-linear relationships</li>
+</ul>
+<p><strong>Multiple linear regression</strong><br>
+For categorical, use one-hot encoding. </p>
+<pre><code>from sklearn.preprocessing import PolynomialFeatures
+x = np.array([2, 3, 4])
+poly = PolynomialFeatures(3, include_bias=False)
+poly.fit_transform(x[:, None])
+</code></pre>
+<p><strong>Regularization</strong>
+Lasso: </p>
+<pre><code>from sklearn.linear_model import Lasso
+model = make_pipeline(GaussianFeatures(30), Lasso(alpha=0.001))
+basis_plot(model, title='Lasso Regression')
+</code></pre>
+<p>Ridge:</p>
+<pre><code>from sklearn.linear_model import Ridge
+model = make_pipeline(GaussianFeatures(30), Ridge(alpha=0.1))
+basis_plot(model, title='Ridge Regression')
+</code></pre>
+<h2 id="classification-logistic-regression">Classification: Logistic regression</h2>
+<p><strong>Goal</strong>: Predict <span class="arithmatex">\(P(C_k \vert X)\)</span></p>
+<p><strong>Why not linear regression?</strong> not bounded between 1 and 0, hard to interpret as probabilities, difficult converting 
+continuous output to class</p>
+<p><strong>Formula:</strong> <span class="arithmatex">\(p(C_1 \vert X) \approx \frac{e^{\beta_0 + \beta_1 X}}{1+e^{\beta_0 + \beta_1 X}}\)</span></p>
+<p><span class="arithmatex">\(\beta_0\)</span>: position of curve, <span class="arithmatex">\(\beta_1\)</span>: "slope"</p>
+<p><strong>Estimator</strong>: Maximum likelihood estimator, equivalent to minimizing negative log-likelihood</p>
+<p><strong>Gradient Descent</strong>  </p>
+<ol>
+<li>Chose random parameters <span class="arithmatex">\(\beta\)</span></li>
+<li>Update according $\beta_{t+1} = \beta_t - \gamma (\nabla f(\beta_t))</li>
+</ol>
+<p>With <span class="arithmatex">\(\gamma\)</span> as step size. <strong>Problems</strong>: computationally expensive</p>
+<p><strong>Stochastic gradient descent</strong>
+Randomly choose subset of training data to estimate gradient</p>
+<h2 id="classification-generative-models">Classification: Generative Models</h2>
+<p>Instead of estimating <em>posterior</em> probability directly (<span class="arithmatex">\(P(C_k \vert X)\)</span>), estimate class-conditioned probability
+(<span class="arithmatex">\(P(X \vert C_k)\)</span>) and the prior probabilities (<span class="arithmatex">\(P(C_k)\)</span>).</p>
+<p>Estimating <span class="arithmatex">\(P(C_k)\)</span> from data is easy, however, estimating <span class="arithmatex">\(P(X \vert C_k)\)</span> is hard (because it is the joint
+probability distribution of any combination of feature <span class="arithmatex">\(P(x_1, x_2, ..., x_p \vert C_k)\)</span>, therefore, <span class="arithmatex">\(2^p\)</span> probabilities in case <span class="arithmatex">\(x\in\{0,1\}\)</span>).</p>
+<h2 id="classification-naive-bayes">Classification: Naive Bayes</h2>
+<p>Makes assumption that features are <strong>conditionally independent</strong>, i.e. <span class="arithmatex">\(P(X \vert C_k) = P(x_1 \vert C_k) P(x_2 \vert C_k)...\)</span> </p>
+<p>Procedure: counting (+ using <strong>smoothing parameter</strong> <span class="arithmatex">\(\alpha\)</span> to avoid zero probabilities)</p>
+<h2 id="classification-k-nearest-neighbour-knn">Classification: k-nearest neighbour (kNN)</h2>
+<p>Nonparametric model</p>
+<p><strong>Idea:</strong> Assume that the probability that <span class="arithmatex">\(x_0\)</span> belongs to class <span class="arithmatex">\(C_k\)</span> is equal to the fraction of the nearest <span class="arithmatex">\(K\)</span>
+points that also belong to <span class="arithmatex">\(C_k\)</span></p>
+<h2 id="classification-decicion-trees">Classification: Decicion Trees</h2>
+<p>Non-parametric (and non-linear) approach for classification (and regression).</p>
+<p><strong>How does it work? CART algorithm</strong>  </p>
+<ol>
+<li>split training set in two sub-sets according to feature value pair</li>
+<li>Recursively split following subsets</li>
+</ol>
+<p><em>Greedy</em> algorithm: select feature <strong>k</strong> and value <strong>t</strong> that produce the purest subsets, i.e. <em>minimize Gini index</em>. </p>
+<p><strong>Problems</strong><br>
+Easy to overfit, accuracy not competitive with other models</p>
+<p><strong>Prevent over-fitting</strong><br>
+Hyperparameter <span class="arithmatex">\(\alpha\)</span>: <code>max-depth</code>, but trade-of with accuracy.</p>
+<p><em>Pruning</em>: grow tree normally, find sub-tree that minimizies loss function</p>
+<h2 id="classification-ensemble-methods">Classification: Ensemble Methods</h2>
+<p>Combining multiple decision trees. Improve accuracy but less interpretability.</p>
+<p><strong>Methods</strong>  </p>
+<ul>
+<li>Bagging (bootstrap aggregation)</li>
+<li>Random forest</li>
+<li>Boosting</li>
+</ul>
+<p><strong>Bagging</strong><br>
+Taking <span class="arithmatex">\(B\)</span> random samples (bootstraps) from sample and build trees. Then take average (regression) or majority 
+(classification).</p>
+<p>Problem: correlated features</p>
+<p><strong>Random Forest</strong>  </p>
+<p><strong>Boosting</strong><br>
+Same as other methods, but <strong>sequentially</strong>.</p>
+<h2 id="link-prediction">Link prediction</h2>
+<p><strong>Graphs</strong><br>
+Graph <span class="arithmatex">\(G \langle E, N \rangle\)</span> consists of edged <span class="arithmatex">\(E\)</span> and nodes <span class="arithmatex">\(N\)</span>. Can be either represented as:</p>
+<ul>
+<li>list of edges</li>
+<li>list of adjacencies (for each node, list of neighbouring nodes)</li>
+<li>adjacency matrix</li>
+</ul>
+<p><strong>Properties</strong>  </p>
+<ul>
+<li>degree: number of connections per node</li>
+<li>average path length: average shortest path between any pair of nodes</li>
+<li>clustering coefficient: fraction of triangles</li>
+<li>assortativity: correlation between linked nodes</li>
+</ul>
+<p><strong>Real-life social networks:</strong> degree is highly heterogenous (preferential attachment), low average path length, 
+high clustering coefficient, connected nodes are similar</p></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../part2_data_visualization/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Part 2 - Data Visualization">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Part 2 - Data Visualization
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../part4_unsupervised_learning/" class="md-footer__link md-footer__link--next" aria-label="Next: Part 4 - Unsupervised Learning">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Part 4 - Unsupervised Learning
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "toc.follow", "navigation.sections"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
