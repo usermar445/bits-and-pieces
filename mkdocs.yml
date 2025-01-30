@@ -77,4 +77,12 @@ nav:
       - Ch. 9 ARIMA models: afcs/arima.md
       - Ch. 10 Dynamic regression models: afcs/dynamic_reg_models.md
       - Ch. 11 Hierarchical and grouped time series: afcs/hierarchical.md
-      - Lecture Questions: afcs/lecture_questions.md
+  - 'Fundamentals':
+      - Cheat Sheet Numpy: fundamentals/numpy.md
+      - Cheat Sheet Pandas: fundamentals/pandas.md
+      - Questions Literature: fundamentals/questions_literature.md
+      - Part 1 - Life-cycle, EDA, Tools: fundamentals/part1_eda.md
+      - Part 2 - Data Visualization: fundamentals/part2_data_visualization.md
+      - Part 3 - Supervised Learning: fundamentals/part3_supervised_learning.md
+      - Part 4 - Unsupervised Learning: fundamentals/part4_unsupervised_learning.md
+      - Part 5 - Ethics: fundamentals/part5_ethics.md
