@@ -100,3 +100,5 @@ nav:
       - Lecture 4: causal/lectures/lecture4.md
       - Lecture 5: causal/lectures/lecture5.md
       - Exam summary: causal/exam_prep.md
+  - 'Computer Science Basics':
+      - Sorting: sorting.md
